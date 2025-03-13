@@ -1,6 +1,7 @@
 <template>
   <!--  // 组件结构-->
   <div class="person">
+<<<<<<< HEAD
     <h3>Name:{{person.name}}</h3>
     <h3>Age:{{person.age}}</h3>
     <h3>Car:{{person.car.c1}} and {{person.car.c2}}</h3>
@@ -10,10 +11,20 @@
     <h3>水位:{{water.height}}</h3>
     <button @click="changeHeight">水位升高</button>
     <button @click="changeDelta">水温升高</button>
+=======
+    <h3>姓名:{{person.name}}</h3>
+    <h3>年龄:{{person.age}}</h3>
+    <h3>公司:{{person.inc}}</h3>
+    <button @click="changeAge">更改年龄</button>
+    <button @click="changeInc">更改公司</button>
+    <button @click="stopWatchSJ">停止石坚</button>
+    <button @click="changePerson">换成李四</button>
+>>>>>>> 8b02458c946c525a94284904e4e2656e6b41b78e
   </div>
 </template>
 
 <script lang="ts" setup name="Person2333">
+<<<<<<< HEAD
 import { ref, reactive, watch, watchEffect } from 'vue'
 let person = reactive({
   name:"张三",
@@ -70,6 +81,34 @@ watchEffect(()=>{
     console.log("水温过高", water.delta);
   }
 })
+=======
+import { ref, watch } from 'vue'
+  let person = ref({
+    name:"张三",
+    age: 18,
+    inc: "Joseph Inc."
+  })
+  function changeAge() {
+    person.value.age += 1;
+  }
+  function changeInc() {
+    person.value.inc += "~";
+  }
+  function changePerson(){
+    person.value = {
+      name:"李四",
+      age:188,
+      inc: "Joseph Inc."
+    }
+  }
+  const stopWatch = watch(person, (newValue,oldValue) => {
+    console.log("Person改变了",newValue,oldValue);
+  },{ immediate: true,deep: true })
+  function stopWatchSJ(){
+    stopWatch();
+  }
+
+>>>>>>> 8b02458c946c525a94284904e4e2656e6b41b78e
 </script>
 
 <style scoped>
